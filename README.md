@@ -1,4 +1,4 @@
-mvn clean install -P domain-test -Dwebdriver.driver=phantomjs -Dwebdriver.base.url=http://europepmc.org/ -Dtest.tagnames=AbsDataProcessIndex -Dmaven.test.skip=false -Dtest.threadcount=1
+mvn clean install -P domain-test -Dwebdriver.driver=phantomjs -Dwebdriver.base.url=http://www.google.co.uk/ -Dtest.tagnames=AbsDataProcessIndex -Dmaven.test.skip=false -Dtest.threadcount=1
 
 
 Oberserved the below lines are printed in my jenkins console :
