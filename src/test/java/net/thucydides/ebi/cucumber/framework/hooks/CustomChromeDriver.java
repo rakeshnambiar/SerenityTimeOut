@@ -20,7 +20,7 @@ public class CustomChromeDriver implements DriverSource {
     public static String downLoadDirectory;
     private static WebDriver webDriver;
 
-    @Override
+    //@Override
     public WebDriver newDriver(){
         try{
                 System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
@@ -54,7 +54,7 @@ public class CustomChromeDriver implements DriverSource {
         return webDriver;
     }
 
-    @Override
+    //@Override
     public boolean takesScreenshots() {
         return true;
     }

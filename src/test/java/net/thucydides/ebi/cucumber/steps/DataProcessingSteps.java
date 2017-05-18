@@ -59,24 +59,9 @@ public class DataProcessingSteps extends ScenarioSteps {
                     }
                     currentRow = (ArrayList<String>) pmidDBCheck.get(counter);
                     if (!pmidValue.equalsIgnoreCase(nextPMID)) {
-                        boolean pmcIndex = dataPipeline.compareAbsIndexData(absIndexURL, pmidValue);
-                        if (!pmcIndex) {
-                            ScenarioHook.getScenario().write("Index CHeck Second attempt for "+pmidValue);
-                            pmcIndex = dataPipeline.compareAbsIndexData(absIndexURL, pmidValue);
-                        }
-                        if (!pmcIndex) {
-                            indexValue = "no";
-                            ScenarioHook.getScenario().write("PMC ID NOT Indexed : " + pmidValue);
-                        } else {
-                            indexValue = "yes";
-                        }
-
-                        if (!pmcIndex & indexed == true) {
-                            indexed = false;
-                        }
-                        currentRow.set(5, indexValue);
-                    } else {
-                        currentRow.set(5, "");
+                        ScenarioHook.getScenario().write("ID for this Iteration - "+pmidValue);
+                        System.out.println("ID for this Iteration - "+pmidValue);
+                        currentRow.set(5, "yes");
                     }
                     indexedValues.add(counter - 1, currentRow);
                 }
@@ -89,7 +74,7 @@ public class DataProcessingSteps extends ScenarioSteps {
     //REQ
     @Then("^Index should returns the PMID details for each query$")
     public void index_should_returns_the_PMID_details_for_each_query() throws Throwable {
-        Assert.assertTrue("ERROR: Index Check Failed",indexed);
+        Assert.assertTrue("ERROR: Index Check Failed",false);
     }
 
 }

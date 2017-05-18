@@ -40,4 +40,20 @@ public class initialization extends PageObject{
             throw new Exception("ERROR: While Preparing for the Test");
         }
     }
+
+    @After
+    public void closeBrowser(Scenario scenario) throws Exception {
+        try {
+            if (scenario.isFailed()) {
+                if((TakesScreenshot) getDriver() != null) {
+                    scenario.embed(((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES), "image/png");
+                }
+
+            }
+        } catch (Exception e) {
+            throw new Exception("Failed to take screen shot \n" + e.getMessage());
+        } finally {
+            webdriver.quit();
+        }
+    }
 }
