@@ -1,16 +1,25 @@
-## Automated web tests using Serenity, Cucumber and Maven
+mvn clean install -P domain-test -Dwebdriver.driver=phantomjs -Dwebdriver.base.url=http://www.google.co.uk/ -Dtest.tagnames=AbsDataProcessIndex -Dmaven.test.skip=false -Dtest.threadcount=1
 
-A simple example of some BDD-style automated acceptance criteria, running against http://etsy.com. 
 
-Run the tests like this:
+Oberserved the below lines are printed in my jenkins console :
+[INFO  - 2017-05-17T15:19:00.974Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-05-17T15:24:00.975Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-05-17T15:29:00.975Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
 
-```
-mvn clean verify
-```
+But still finally it displayed :
 
-By default, the tests run with PhantomJS, so you will need this installed. Otherwise, if you prefer Firefox, modify the serenity.properties file or run the tests like this:
-```
-mvn clean verify -Dwebdriver.driver=firefox
-```
-
-The reports will be generated in `target/site/serenity`.
+java.lang.StackOverflowError: null
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:84)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
+	at net.thucydides.core.model.TestStep.renumberChildrenFrom(TestStep.java:85)
+	at net.thucydides.core.model.TestStep.renumberFrom(TestStep.java:78)
