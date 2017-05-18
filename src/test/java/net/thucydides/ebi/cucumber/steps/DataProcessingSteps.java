@@ -37,7 +37,7 @@ public class DataProcessingSteps extends ScenarioSteps {
 
     @Given("^I have all the newly loaded PMID's with me to check the Indexing$")
     public void i_have_all_the_newly_loaded_PMID_s_with_me_to_check_the_Indexing() throws Throwable {
-        pmidDBCheck = ExcelHelper.ReadFullTextIndexPipeLineData("AbstractDataPipeLine.xlsx");
+        pmidDBCheck = ExcelHelper.ReadFullTextIndexPipeLineData("xAbstractDataPipeLine.xlsx");
         if(pmidDBCheck.size() < 2){
             doNotProcess = true;
         }
