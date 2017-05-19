@@ -22,7 +22,11 @@ public class ExcelHelper {
         FileInputStream fileInputStream = null;
         ArrayList<List<String>> fileValues = new ArrayList<List<String>>();
         try {
-            fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources"+"\\"+filename);
+            if(System.getProperty("os.name").contains("Windows")) {
+                fileInputStream = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources" + "\\" + filename);
+            } else {
+                fileInputStream = new FileInputStream(System.getProperty("user.home") + "/src/test/resources/" + filename);
+            }
             Workbook workbook = StreamingReader.builder()
                     .rowCacheSize(100)
                     .bufferSize(4096)
